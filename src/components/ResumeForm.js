@@ -44,6 +44,23 @@ function ResumeForm({
     [name]: errorMessage,
   });
 }
+// Profile Photo
+function handlePhotoChange(event) {
+  const file = event.target.files[0];
+
+  if (!file) return;
+
+  const reader = new FileReader();
+
+  reader.onloadend = () => {
+    setResumeData({
+      ...resumeData,
+      photo: reader.result,
+    });
+  };
+
+  reader.readAsDataURL(file);
+}
 
 
   // ================= EDUCATION =================
@@ -338,8 +355,49 @@ function handleProjectChange(index, event) {
           placeholder="Write a short professional summary"
           rows="5"
         />
+        <label>Profile Photo</label>
+
+<input
+  type="file"
+  accept="image/*"
+  onChange={handlePhotoChange}
+/>
+
+{resumeData.photo && (
+  <div className="photo-upload-preview">
+    <img
+      src={resumeData.photo}
+      alt="Profile"
+    />
+  </div>
+)}
+{resumeData.photo && (
+  <div className="photo-preview">
+
+    <img
+      src={resumeData.photo}
+      alt="Preview"
+      className="form-profile-photo"
+    />
+
+    <button
+      type="button"
+      className="remove-button"
+      onClick={() =>
+        setResumeData({
+          ...resumeData,
+          photo: ""
+        })
+      }
+    >
+      Remove Photo
+    </button>
+
+  </div>
+)}
 
       </div>
+
 
 
       {/* ================= EDUCATION ================= */}

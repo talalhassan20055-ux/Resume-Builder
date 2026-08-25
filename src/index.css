@@ -12,3 +12,21 @@ body {
 
   color: #222222;
 }
+.social-link {
+
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  color: inherit;
+  text-decoration: none;
+
+  font-size: 12px;
+}
+
+
+.social-link:hover {
+
+  text-decoration: underline;
+
+}

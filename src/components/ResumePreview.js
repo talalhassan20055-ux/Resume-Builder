@@ -1,3 +1,6 @@
+import { FaLinkedin, FaGithub } from "react-icons/fa";
+
+
 function ResumePreview({ resumeData, selectedTemplate }) {
   return (
     <section className="resume-preview">
@@ -5,6 +8,22 @@ function ResumePreview({ resumeData, selectedTemplate }) {
 
       <div className={`resume-paper ${selectedTemplate}`}>
         <header className="resume-header">
+
+  {resumeData.photo &&
+    [
+      "modern",
+      "executive",
+      "creative",
+      "elegant",
+      "two-column",
+      "dark-premium"
+    ].includes(selectedTemplate) && (
+      <img
+        src={resumeData.photo}
+        alt="Profile"
+        className="resume-profile-photo"
+      />
+    )}
           <h1>
             {resumeData.fullName || "Your Name"}
           </h1>
@@ -13,15 +32,52 @@ function ResumePreview({ resumeData, selectedTemplate }) {
             {resumeData.jobTitle || "Software Engineer"}
           </p>
 
-          <div className="contact-info">
-            <span>
-              {resumeData.email || "email@example.com"}
-            </span>
+         <div className="contact-info">
 
-            <span>
-              {resumeData.phone || "+92 300 1234567"}
-            </span>
-          </div>
+  <span>
+    {resumeData.email}
+  </span>
+
+  <span>
+    {resumeData.phone}
+  </span>
+
+
+  {resumeData.linkedin && (
+  <a
+    href={
+      resumeData.linkedin.startsWith("http://") ||
+      resumeData.linkedin.startsWith("https://")
+        ? resumeData.linkedin
+        : `https://${resumeData.linkedin}`
+    }
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social-link"
+  >
+    <FaLinkedin />
+    LinkedIn
+  </a>
+)}
+
+
+  {resumeData.github && (
+  <a
+    href={
+      resumeData.github.startsWith("http://") ||
+      resumeData.github.startsWith("https://")
+        ? resumeData.github
+        : `https://${resumeData.github}`
+    }
+    target="_blank"
+    rel="noopener noreferrer"
+    className="social-link"
+  >
+    <FaGithub />
+    GitHub
+  </a>
+)}
+</div>
         </header>
 
         <section className="resume-section">
@@ -157,18 +213,23 @@ function ResumePreview({ resumeData, selectedTemplate }) {
           {project.description || "Project description"}
         </p>
 
-        {project.link && (
-          <p>
-            <strong>Link:</strong>{" "}
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noreferrer"
-            >
-              View Project
-            </a>
-          </p>
-        )}
+       {project.link && (
+  <p>
+    <strong>Link:</strong>{" "}
+    <a
+      href={
+        project.link.startsWith("http://") ||
+        project.link.startsWith("https://")
+          ? project.link
+          : `https://${project.link}`
+      }
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      View Project
+    </a>
+  </p>
+)}
 
       </div>
 
