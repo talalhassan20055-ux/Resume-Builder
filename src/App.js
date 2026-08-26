@@ -61,13 +61,13 @@ const [backgroundIndex, setBackgroundIndex] = useState(0);
 
 useEffect(() => {
   const interval = setInterval(() => {
-    setBackgroundIndex((prevIndex) => {
-      return (prevIndex + 1) % animeBackgrounds.length;
-    });
-  }, 8000);
+    setBackgroundIndex(
+      (prev) => (prev + 1) % animeBackgrounds.length
+    );
+  }, 5000);
 
   return () => clearInterval(interval);
-}, []);
+}, [animeBackgrounds.length]);
 
   function validateResume() {
   const newErrors = {};
