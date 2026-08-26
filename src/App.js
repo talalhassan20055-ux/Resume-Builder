@@ -120,7 +120,6 @@ useEffect(() => {
       quality: 0.98,
     },
 
-    // IMPORTANT
     enableLinks: true,
 
     html2canvas: {
@@ -129,6 +128,11 @@ useEffect(() => {
       allowTaint: false,
       backgroundColor: "#ffffff",
       logging: false,
+
+      scrollX: 0,
+      scrollY: 0,
+      windowWidth: document.documentElement.scrollWidth,
+      windowHeight: document.documentElement.scrollHeight,
     },
 
     jsPDF: {
@@ -139,21 +143,27 @@ useEffect(() => {
     },
 
     pagebreak: {
-  mode: ["css", "legacy"],
-  avoid: [
-    ".education-preview",
-    ".experience-preview",
-    ".project-preview",
-    ".skill-item"
-  ],
-},
+      mode: ["css", "legacy"],
+      avoid: [
+        ".education-preview",
+        ".experience-preview",
+        ".project-preview",
+        ".skill-item",
+      ],
+    },
   };
 
   try {
+    resume.scrollIntoView({
+      behavior: "auto",
+      block: "start",
+    });
+
     await html2pdf()
       .set(options)
       .from(resume)
       .save();
+
   } catch (error) {
     console.error("PDF generation error:", error);
   }
