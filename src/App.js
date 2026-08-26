@@ -131,8 +131,7 @@ useEffect(() => {
 
       scrollX: 0,
       scrollY: 0,
-      windowWidth: document.documentElement.scrollWidth,
-      windowHeight: document.documentElement.scrollHeight,
+      
     },
 
     jsPDF: {
