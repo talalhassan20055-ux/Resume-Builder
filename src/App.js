@@ -46,6 +46,28 @@ function App() {
     );
 
   }, [resumeData]);
+  const animeBackgrounds = [
+  
+  "/images/image/anime-bg1.png",
+  "/images/image/anime-bg2.png",
+  "/images/image/anime-bg3.png",
+  "/images/image/anime-bg4.png",
+  "/images/image/anime-bg5.png",
+];
+
+
+
+const [backgroundIndex, setBackgroundIndex] = useState(0);
+
+useEffect(() => {
+  const interval = setInterval(() => {
+    setBackgroundIndex((prevIndex) => {
+      return (prevIndex + 1) % animeBackgrounds.length;
+    });
+  }, 8000);
+
+  return () => clearInterval(interval);
+}, []);
 
   function validateResume() {
   const newErrors = {};
@@ -159,7 +181,18 @@ function resetResume() {
 }
 
   return (
-    <div className="app">
+    <div
+  className="app"
+  style={{
+    backgroundImage: `
+  linear-gradient(
+    rgba(5, 10, 25, 0.45),
+    rgba(5, 10, 25, 0.60)
+  ),
+  url("${animeBackgrounds[backgroundIndex]}")
+`,
+  }}
+>
       <Navbar />
      <div className="template-selector">
   <h3>Choose Template</h3>

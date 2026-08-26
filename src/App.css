@@ -33,21 +33,17 @@ body {
 
 .app {
   min-height: 100vh;
+  width: 100%;
 
-  background:
-    radial-gradient(
-      circle at 10% 10%,
-      rgba(99, 102, 241, 0.10),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 90% 20%,
-      rgba(34, 211, 238, 0.07),
-      transparent 28%
-    ),
-    #0b1120;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  overflow-x: clip;
+
+  position: relative;
 }
-
 
 /* =========================================================
    NAVBAR
@@ -259,21 +255,18 @@ body {
    ========================================================= */
 
 .builder-container {
-  max-width: 1480px;
-
+  width: 100%;
+  max-width: 1500px;
   margin: 0 auto;
 
-  padding: 25px 40px 60px;
-
   display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 
-  grid-template-columns: 440px minmax(0, 1fr);
-
-  gap: 32px;
-
+  gap: 28px;
   align-items: start;
-}
 
+  height: calc(100vh - 120px);
+}
 
 /* =========================================================
    FORM SIDE
@@ -281,6 +274,16 @@ body {
 
 .resume-form {
   width: 100%;
+  height: 100%;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 10px;
+
+  box-sizing: border-box;
+
+  scrollbar-width: thin;
 }
 
 .resume-form > h2 {
@@ -310,31 +313,49 @@ body {
 .form-section {
   position: relative;
 
-  margin-bottom: 18px;
+  width: 100%;
+  box-sizing: border-box;
 
+  margin-bottom: 18px;
   padding: 22px;
 
+  /* Dark glass effect */
   background:
     linear-gradient(
       145deg,
-      rgba(17, 24, 39, 0.98),
-      rgba(15, 23, 42, 0.98)
+      rgba(10, 18, 38, 0.72),
+      rgba(15, 23, 42, 0.68)
     );
 
-  border: 1px solid #1e293b;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 
-  border-radius: 13px;
+  border: 1px solid rgba(56, 189, 248, 0.14);
+
+  border-radius: 16px;
 
   box-shadow:
-    0 10px 35px rgba(0, 0, 0, 0.20);
+    0 12px 35px rgba(0, 0, 0, 0.28);
 
   transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .form-section:hover {
-  border-color: #293548;
+  border-color: rgba(56, 189, 248, 0.30);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(56, 189, 248, 0.05);
+}
+@media (max-width: 768px) {
+  .form-section {
+    padding: 18px;
+    margin-bottom: 15px;
+    border-radius: 14px;
+  }
 }
 
 .form-section h3 {
@@ -553,10 +574,16 @@ body {
 
 .resume-preview {
   width: 100%;
+  height: 100%;
 
-  position: sticky;
+  align-self: start;
 
-  top: 95px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  box-sizing: border-box;
+
+  padding-right: 10px;
 }
 
 .resume-preview > h2 {
@@ -2909,4 +2936,478 @@ body {
     break-after: avoid !important;
     page-break-after: avoid !important;
   }
+}
+/* =========================================================
+   MODERN ANIMATED UI
+========================================================= */
+
+/* ---------- Smooth Page ---------- */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+
+/* ---------- Animated Background ---------- */
+
+.app {
+  position: relative;
+  overflow: hidden;
+}
+
+.app::before,
+.app::after {
+  content: "";
+  position: fixed;
+  width: 450px;
+  height: 450px;
+  border-radius: 50%;
+  filter: blur(100px);
+  opacity: 0.12;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.app::before {
+  background: #6366f1;
+  top: -180px;
+  left: -180px;
+  animation: floatingGlow 8s ease-in-out infinite;
+}
+
+.app::after {
+  background: #8b5cf6;
+  right: -180px;
+  bottom: -180px;
+  animation: floatingGlow 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatingGlow {
+
+  0% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(40px, 30px);
+  }
+
+  100% {
+    transform: translate(0, 0);
+  }
+
+}
+
+
+/* ---------- Navbar ---------- */
+
+.navbar {
+  transition: all 0.3s ease;
+}
+
+.navbar:hover {
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ---------- Template Selector ---------- */
+
+.template-selector {
+  animation: fadeDown 0.7s ease both;
+}
+
+@keyframes fadeDown {
+
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ---------- Template Buttons ---------- */
+
+.template-selector button {
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.template-selector button::before {
+  content: "";
+
+  position: absolute;
+
+  width: 0;
+  height: 0;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  transition:
+    width 0.5s ease,
+    height 0.5s ease;
+}
+
+.template-selector button:hover::before {
+  width: 250px;
+  height: 250px;
+}
+
+.template-selector button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+.template-selector button.active {
+  box-shadow:
+    0 0 0 1px rgba(139, 92, 246, 0.5),
+    0 8px 25px rgba(99, 102, 241, 0.3);
+}
+
+
+/* ---------- Main Builder ---------- */
+
+.builder-container {
+  animation: pageAppear 0.8s ease both;
+}
+
+@keyframes pageAppear {
+
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* ---------- Form Cards ---------- */
+
+.form-section {
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.form-section:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 15px 40px rgba(0, 0, 0, 0.18);
+}
+
+
+/* ---------- Inputs ---------- */
+
+.form-section input,
+.form-section textarea {
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.2s ease;
+}
+
+.form-section input:focus,
+.form-section textarea:focus {
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 0 0 3px rgba(99, 102, 241, 0.12),
+    0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+
+/* ---------- Buttons ---------- */
+
+.add-button,
+.remove-button,
+.print-button,
+.reset-button {
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.add-button:hover,
+.print-button:hover {
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 8px 22px rgba(99, 102, 241, 0.28);
+}
+
+.remove-button:hover,
+.reset-button:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(239, 68, 68, 0.18);
+}
+
+.add-button:active,
+.remove-button:active,
+.print-button:active,
+.reset-button:active {
+
+  transform: scale(0.96);
+}
+
+
+/* ---------- Resume Preview ---------- */
+
+.resume-preview {
+
+  animation: previewAppear 0.9s ease both;
+}
+
+@keyframes previewAppear {
+
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+}
+
+
+/* ---------- Resume Paper ---------- */
+
+.resume-paper {
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.resume-paper:hover {
+
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.3);
+}
+
+
+/* ---------- Education / Experience / Projects ---------- */
+
+.education-preview,
+.experience-preview,
+.project-preview {
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.education-preview:hover,
+.experience-preview:hover,
+.project-preview:hover {
+
+  transform: translateX(5px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+
+/* ---------- Skills ---------- */
+
+.skills-list li {
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.skills-list li:hover {
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 15px rgba(99, 102, 241, 0.15);
+}
+
+
+/* ---------- Section Headings ---------- */
+
+.resume-section h3 {
+
+  position: relative;
+}
+
+.resume-section h3::after {
+
+  content: "";
+
+  display: block;
+
+  width: 0;
+  height: 2px;
+
+  margin-top: 5px;
+
+  transition: width 0.4s ease;
+}
+
+.resume-section:hover h3::after {
+  width: 45px;
+}
+
+
+/* ---------- Photo ---------- */
+
+.profile-photo,
+.resume-photo {
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.profile-photo:hover,
+.resume-photo:hover {
+
+  transform: scale(1.05);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+
+/* ---------- Loading-like shimmer ---------- */
+
+.resume-preview::before {
+
+  content: "";
+
+  position: absolute;
+
+  width: 120px;
+  height: 2px;
+
+  opacity: 0.4;
+
+  animation: shimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+
+  0% {
+    transform: translateX(-150px);
+  }
+
+  50% {
+    transform: translateX(150px);
+  }
+
+  100% {
+    transform: translateX(-150px);
+  }
+
+}
+
+
+/* ---------- Accessibility ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+}
+/* ================================
+   RESPONSIVE ANIME BACKGROUND
+================================ */
+
+@media (max-width: 768px) {
+  .app {
+    min-height: 100vh;
+
+    background-size: cover;
+    background-position: center top;
+
+    background-attachment: scroll;
+  }
+}
+/* ================================
+   Mobile CSS
+================================ */
+
+
+@media (max-width: 768px) {
+
+  .builder-container {
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+
+    gap: 20px;
+  }
+
+  .resume-form {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+
+  .resume-preview {
+    height: auto;
+    overflow: visible;
+    padding-right: 0;
+  }
+}
+
+
+
+
+.social-link,
+.project-link a {
+  word-break: break-all;
+  overflow-wrap: anywhere;
 }

@@ -56,12 +56,10 @@ function ResumePreview({ resumeData, selectedTemplate }) {
     className="social-link"
   >
     <FaLinkedin />
-    LinkedIn
+    {resumeData.linkedin}
   </a>
 )}
-
-
-  {resumeData.github && (
+ {resumeData.github && (
   <a
     href={
       resumeData.github.startsWith("http://") ||
@@ -74,7 +72,7 @@ function ResumePreview({ resumeData, selectedTemplate }) {
     className="social-link"
   >
     <FaGithub />
-    GitHub
+    {resumeData.github}
   </a>
 )}
 </div>
@@ -214,8 +212,9 @@ function ResumePreview({ resumeData, selectedTemplate }) {
         </p>
 
        {project.link && (
-  <p>
-    <strong>Link:</strong>{" "}
+  <p className="project-link">
+    <strong>Project Link:</strong>{" "}
+
     <a
       href={
         project.link.startsWith("http://") ||
@@ -226,7 +225,7 @@ function ResumePreview({ resumeData, selectedTemplate }) {
       target="_blank"
       rel="noopener noreferrer"
     >
-      View Project
+      {project.link}
     </a>
   </p>
 )}
