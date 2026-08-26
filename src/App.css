@@ -2466,3 +2466,386 @@ body {
     page-break-inside: avoid;
   }
 }
+/* =====================================================
+   MOBILE RESPONSIVE DESIGN
+===================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* ==============================
+   TABLET
+================================= */
+
+@media (max-width: 1000px) {
+
+  .builder-container {
+    grid-template-columns: 1fr;
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  .resume-form {
+    width: 100%;
+  }
+
+  .resume-preview {
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .resume-paper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+}
+
+
+/* ==============================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .app {
+    width: 100%;
+    min-width: 0;
+  }
+
+
+  /* ==============================
+     NAVBAR
+  ================================= */
+
+  .navbar {
+    width: 100%;
+    padding: 14px 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+  }
+
+  .navbar h2 {
+    font-size: 18px;
+    white-space: nowrap;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 12px;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+  }
+
+
+  /* ==============================
+     TEMPLATE SELECTOR
+  ================================= */
+
+  .template-selector {
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .template-selector h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+  }
+
+  .template-selector button {
+    width: auto;
+    min-width: 0;
+
+    padding: 9px 13px;
+    margin: 3px;
+
+    font-size: 11px;
+  }
+
+
+  /* ==============================
+     ACTION BUTTONS
+  ================================= */
+
+  .print-button,
+  .reset-button {
+    margin: 5px 4px;
+    padding: 11px 14px;
+    font-size: 11px;
+  }
+
+
+  /* ==============================
+     MAIN CONTAINER
+  ================================= */
+
+  .builder-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 100%;
+
+    padding: 0 12px 30px;
+    margin: 0;
+  }
+
+
+  /* ==============================
+     FORM
+  ================================= */
+
+  .resume-form {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .resume-form > h2 {
+    font-size: 26px;
+    margin-top: 15px;
+  }
+
+  .form-description {
+    font-size: 13px;
+  }
+
+  .form-section {
+    width: 100%;
+    min-width: 0;
+
+    padding: 16px;
+    margin-bottom: 16px;
+
+    border-radius: 10px;
+  }
+
+
+  /* ==============================
+     INPUTS
+  ================================= */
+
+  .form-section input,
+  .form-section textarea,
+  .form-section select {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    font-size: 14px;
+    padding: 12px;
+
+    box-sizing: border-box;
+  }
+
+  .form-section textarea {
+    min-height: 110px;
+    resize: vertical;
+  }
+
+  .form-section label {
+    font-size: 12px;
+  }
+
+
+  /* ==============================
+     SECTION HEADINGS
+  ================================= */
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .section-heading h3 {
+    font-size: 17px;
+  }
+
+  .add-button {
+    font-size: 11px;
+    padding: 9px 12px;
+  }
+
+
+  /* ==============================
+     EDUCATION / EXPERIENCE
+  ================================= */
+
+  .education-item,
+  .experience-item,
+  .skill-item,
+  .project-item {
+    width: 100%;
+    min-width: 0;
+
+    padding: 14px;
+    margin-top: 12px;
+  }
+
+  .education-item h4,
+  .experience-item h4 {
+    font-size: 14px;
+  }
+
+  .remove-button {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 12px;
+  }
+
+
+  /* ==============================
+     PHOTO
+  ================================= */
+
+  .photo-upload-preview {
+    margin-top: 15px;
+  }
+
+  .photo-upload-preview img {
+    width: 100px;
+    height: 100px;
+  }
+
+
+  /* ==============================
+     RESUME PREVIEW
+  ================================= */
+
+  .resume-preview {
+    width: 100%;
+    min-width: 0;
+
+    margin-top: 20px;
+  }
+
+  .resume-preview > h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  /*
+     Important:
+     Keep resume paper readable instead
+     of allowing it to break the page.
+  */
+
+  .resume-paper {
+    width: 100%;
+    max-width: 100%;
+
+    min-width: 0;
+
+    margin: 0 auto;
+  }
+
+
+  /* ==============================
+     RESUME HEADER
+  ================================= */
+
+  .resume-header {
+    padding: 25px 18px !important;
+  }
+
+  .resume-header h1 {
+    font-size: 25px !important;
+    word-break: break-word;
+  }
+
+  .resume-header p {
+    font-size: 13px !important;
+  }
+
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+
+    gap: 5px !important;
+
+    word-break: break-word;
+  }
+
+
+  /* ==============================
+     RESUME SECTIONS
+  ================================= */
+
+  .resume-section {
+    margin: 18px !important;
+  }
+
+  .resume-section h3 {
+    font-size: 11px !important;
+  }
+
+  .resume-section p {
+    font-size: 10px !important;
+    line-height: 1.6;
+    word-break: break-word;
+  }
+
+
+  /* ==============================
+     SKILLS
+  ================================= */
+
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 6px;
+  }
+
+  .skills-list li {
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+
+  /* ==============================
+     PROJECTS
+  ================================= */
+
+  .project-preview {
+    width: 100%;
+    min-width: 0;
+
+    word-break: break-word;
+  }
+
+  .project-preview a {
+    word-break: break-all;
+  }
+
+}

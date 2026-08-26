@@ -75,7 +75,7 @@ function App() {
   return Object.keys(newErrors).length === 0;
 }
 
-  async function handlePrint() {
+ async function handlePrint() {
   const isValid = validateResume();
 
   if (!isValid) {
@@ -90,6 +90,7 @@ function App() {
 
   const options = {
     margin: 0,
+
     filename: `${resumeData.fullName || "resume"}.pdf`,
 
     image: {
@@ -97,23 +98,37 @@ function App() {
       quality: 0.98,
     },
 
+    // IMPORTANT
+    enableLinks: true,
+
     html2canvas: {
       scale: 2,
       useCORS: true,
-      backgroundColor: null,
+      allowTaint: false,
+      backgroundColor: "#ffffff",
+      logging: false,
     },
 
     jsPDF: {
       unit: "mm",
       format: "a4",
       orientation: "portrait",
+      compress: true,
+    },
+
+    pagebreak: {
+      mode: ["css", "legacy"],
     },
   };
 
-  await html2pdf()
-    .set(options)
-    .from(resume)
-    .save();
+  try {
+    await html2pdf()
+      .set(options)
+      .from(resume)
+      .save();
+  } catch (error) {
+    console.error("PDF generation error:", error);
+  }
 }
 function resetResume() {
   const emptyResume = {
