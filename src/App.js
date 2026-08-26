@@ -117,8 +117,14 @@ function App() {
     },
 
     pagebreak: {
-      mode: ["css", "legacy"],
-    },
+  mode: ["css", "legacy"],
+  avoid: [
+    ".education-preview",
+    ".experience-preview",
+    ".project-preview",
+    ".skill-item"
+  ],
+},
   };
 
   try {

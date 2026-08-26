@@ -2849,3 +2849,64 @@ body {
   }
 
 }
+/* =====================================================
+   PDF PAGE BREAK FIX
+===================================================== */
+
+/* Keep complete resume items together */
+.education-preview,
+.experience-preview,
+.project-preview,
+.skill-item {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Keep headings with their content */
+.resume-section {
+  break-inside: auto;
+}
+
+.resume-section h3 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+/* Don't split the resume header */
+.resume-header {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* Better spacing for PDF */
+.education-preview,
+.experience-preview,
+.project-preview {
+  margin-bottom: 12px;
+}
+
+
+/* =====================================================
+   PDF / PRINT
+===================================================== */
+
+@media print {
+
+  .resume-paper {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+  }
+
+  .education-preview,
+  .experience-preview,
+  .project-preview {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  .resume-section h3 {
+    break-after: avoid !important;
+    page-break-after: avoid !important;
+  }
+}
