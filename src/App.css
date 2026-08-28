@@ -36,13 +36,11 @@ body {
   width: 100%;
 
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  overflow-x: clip;
-
-  position: relative;
+  transition: background-image 1s ease-in-out;
 }
 
 /* =========================================================
@@ -3410,4 +3408,326 @@ body {
 .project-link a {
   word-break: break-all;
   overflow-wrap: anywhere;
+}
+
+.developer-section {
+  width: 100%;
+  padding: 80px 24px 40px;
+  box-sizing: border-box;
+}
+
+.developer-container {
+  max-width: 1100px;
+  margin: 0 auto;
+
+  padding: 45px 50px 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(15, 23, 42, 0.96),
+      rgba(10, 15, 28, 0.98)
+    );
+
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 24px;
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle glow */
+
+.developer-container::before {
+  content: "";
+
+  position: absolute;
+
+  width: 300px;
+  height: 300px;
+
+  top: -180px;
+  right: -100px;
+
+  background: rgba(249, 115, 22, 0.10);
+
+  border-radius: 50%;
+
+  filter: blur(70px);
+
+  pointer-events: none;
+}
+
+
+/* TOP */
+
+.developer-top {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  margin-bottom: 42px;
+}
+
+.developer-badge {
+  color: #f97316;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  white-space: nowrap;
+}
+
+.developer-line {
+  height: 1px;
+  flex: 1;
+
+  background: linear-gradient(
+    90deg,
+    rgba(249, 115, 22, 0.35),
+    transparent
+  );
+}
+
+
+/* MAIN */
+
+.developer-main {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1px
+    1.2fr;
+
+  gap: 45px;
+
+  align-items: center;
+}
+
+.developer-intro {
+  padding-right: 20px;
+}
+
+.developer-small-text {
+  margin: 0 0 10px;
+
+  color: #64748b;
+
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.developer-intro h2 {
+  margin: 0;
+
+  color: #f8fafc;
+
+  font-size: clamp(38px, 5vw, 58px);
+
+  line-height: 1;
+
+  font-weight: 850;
+
+  letter-spacing: -2px;
+}
+
+.developer-intro h2 span {
+  color: #f97316;
+}
+
+.developer-role {
+  margin: 14px 0 0;
+
+  color: #94a3b8;
+
+  font-size: 15px;
+
+  font-weight: 600;
+}
+
+
+/* DIVIDER */
+
+.developer-divider {
+  width: 1px;
+  height: 130px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      transparent,
+      #334155,
+      transparent
+    );
+}
+
+
+/* INFO */
+
+.developer-info {
+  max-width: 520px;
+}
+
+.developer-info > p {
+  margin: 0;
+
+  color: #cbd5e1;
+
+  font-size: 15px;
+
+  line-height: 1.8;
+}
+
+
+/* LINKS */
+
+.developer-links {
+  display: flex;
+
+  gap: 12px;
+
+  margin-top: 25px;
+}
+
+.developer-links a {
+  min-width: 105px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 15px;
+
+  padding: 11px 14px;
+
+  color: #e2e8f0;
+
+  background: rgba(30, 41, 59, 0.55);
+
+  border: 1px solid #334155;
+
+  border-radius: 10px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.developer-links a:hover {
+  transform: translateY(-3px);
+
+  background: rgba(51, 65, 85, 0.65);
+
+  border-color: rgba(249, 115, 22, 0.65);
+}
+
+.developer-links .arrow {
+  color: #f97316;
+
+  font-size: 16px;
+
+  transition: transform 0.2s ease;
+}
+
+.developer-links a:hover .arrow {
+  transform: translate(2px, -2px);
+}
+
+
+/* FOOTER */
+
+.developer-footer {
+  display: flex;
+
+  justify-content: space-between;
+
+  align-items: center;
+
+  margin-top: 45px;
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(148, 163, 184, 0.10);
+
+  color: #64748b;
+
+  font-size: 11px;
+}
+@media (max-width: 700px) {
+
+  .developer-section {
+    padding: 45px 14px 25px;
+  }
+
+  .developer-container {
+    padding: 30px 22px 20px;
+
+    border-radius: 18px;
+  }
+
+  .developer-top {
+    margin-bottom: 30px;
+  }
+
+  .developer-main {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .developer-intro {
+    padding-right: 0;
+  }
+
+  .developer-intro h2 {
+    font-size: 42px;
+  }
+
+  .developer-divider {
+    width: 100%;
+    height: 1px;
+
+    background:
+      linear-gradient(
+        90deg,
+        transparent,
+        #334155,
+        transparent
+      );
+  }
+
+  .developer-info > p {
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .developer-links {
+    width: 100%;
+  }
+
+  .developer-links a {
+    flex: 1;
+  }
+
+  .developer-footer {
+    flex-direction: column;
+
+    gap: 8px;
+
+    align-items: flex-start;
+
+    margin-top: 30px;
+  }
 }

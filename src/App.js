@@ -2,9 +2,37 @@ import html2pdf from "html2pdf.js";
 import { useEffect, useState } from "react";
 import "./App.css";
 
+
 import Navbar from "./components/Navbar";
 import ResumeForm from "./components/ResumeForm";
 import ResumePreview from "./components/ResumePreview";
+import Developer from "./components/Developer";
+
+
+
+// Anime background images
+const animeBackgrounds = [
+  "/images/image/anime-bg1.png",
+  "/images/image/anime-bg2.png",
+  "/images/image/anime-bg3.png",
+  "/images/image/anime-bg4.png",
+  "/images/image/anime-bg5.png",
+  "/images/image/anime-bg6.png",
+  "/images/image/anime-bg7.png",
+  "/images/image/anime-bg8.png",
+  "/images/image/anime-bg9.png",
+  "/images/image/anime-bg10.png",
+  "/images/image/anime-bg11.png",
+  "/images/image/anime-bg12.png",
+  "/images/image/anime-bg13.png",
+  "/images/image/anime-bg14.png",
+  "/images/image/anime-bg15.png",
+  "/images/image/anime-bg16.png",
+  "/images/image/anime-bg17.png",
+  "/images/image/anime-bg18.png",
+  "/images/image/anime-bg19.png",
+  "/images/image/anime-bg20.png",
+];
 
 function App() {
 
@@ -46,14 +74,7 @@ function App() {
     );
 
   }, [resumeData]);
-  const animeBackgrounds = [
-  
-  "/images/image/anime-bg1.png",
-  "/images/image/anime-bg2.png",
-  "/images/image/anime-bg3.png",
-  "/images/image/anime-bg4.png",
-  "/images/image/anime-bg5.png",
-];
+ 
 
 
 
@@ -61,13 +82,11 @@ const [backgroundIndex, setBackgroundIndex] = useState(0);
 
 useEffect(() => {
   const interval = setInterval(() => {
-    setBackgroundIndex(
-      (prev) => (prev + 1) % animeBackgrounds.length
-    );
-  }, 5000);
+    setBackgroundIndex((prev) => (prev + 1) % animeBackgrounds.length);
+  }, 4000); // 4 seconds
 
   return () => clearInterval(interval);
-}, [animeBackgrounds.length]);
+}, []);
 
   function validateResume() {
   const newErrors = {};
@@ -336,6 +355,7 @@ function resetResume() {
   selectedTemplate={selectedTemplate}
 />
       </main>
+      <Developer />
     </div>
   );
 }
