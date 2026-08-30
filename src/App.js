@@ -83,7 +83,7 @@ const [backgroundIndex, setBackgroundIndex] = useState(0);
 useEffect(() => {
   const interval = setInterval(() => {
     setBackgroundIndex((prev) => (prev + 1) % animeBackgrounds.length);
-  }, 4000); // 4 seconds
+  }, 8000); // 8 seconds
 
   return () => clearInterval(interval);
 }, []);
